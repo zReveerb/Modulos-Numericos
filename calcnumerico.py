@@ -8,14 +8,14 @@ def malthus (q, n0, r, t):  #Define-se a equação de Malthus
 
 
 def temperatura(x, k, dx, dt):                      #Calcula a distribuição de temperatura para o próximo passo de tempo. Manda lista de temperatura nos pontos (x)
-    lista_novos = [20]                              #Manda o dx (variação de distancia dos pontos), dt (variacao de tempo)
+    lista_novos = [273.15+25]                              #Manda o dx (variação de distancia dos pontos), dt (variacao de tempo)
     variacao = np.diff(np.diff(x)) / dx ** 2        #Manda k, coeficiente de condutividade térmica
                                                     # Os extremos de temperatura por padrão são 20 e 60 graus.
 
     for i in range(1, len(x) - 1):
         lista_novos.append(k * dt * variacao[i - 1] + x[i])
 
-    lista_novos.append(60)
+    lista_novos.append(273.15+40)
     return lista_novos
 
 
@@ -52,3 +52,7 @@ def aceitavel(C, L):                                #C é a concentraçao de cho
         print("CONCENTRAÇÃO DE CHORUME ACEITAVEL")
     else:
         print("CONCENTRAÇÃO DE CHORUME MAIOR QUE O LIMITE")
+
+
+
+
